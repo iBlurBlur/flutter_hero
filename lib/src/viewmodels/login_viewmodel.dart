@@ -47,7 +47,7 @@ class LoginViewModel {
 
     final token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImlCbHVyQmx1ciIsIm5hbWUiOiJpQmx1ckJsdXIiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE1MTYyMzkwMjJ9.yAvjI0izXnHcM6DCY581pboWI0ObwSRRJadGVhaGYkA";
-    await LocalStorageService().login(username, token);
+    await LocalStorageService().setUserInfo(username, token);
     _loginController.sink.add(true);
   }
 }

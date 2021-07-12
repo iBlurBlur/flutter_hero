@@ -8,9 +8,20 @@ class LocalStorageService {
 
   factory LocalStorageService() => _instance;
 
-  Future<void> login(String username, token) async {
+  Future<void> setUserInfo(String username, token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(AppSetting.username, username);
     prefs.setString(AppSetting.token, token);
+  }
+
+  Future<String> getToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(AppSetting.token) ?? '';
+  }
+
+  Future<void> removeToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // prefs.clear();
+    prefs.remove(AppSetting.token);
   }
 }
