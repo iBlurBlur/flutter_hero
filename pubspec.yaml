@@ -31,6 +31,7 @@ dependencies:
   another_flushbar: ^1.10.24
   shared_preferences: ^2.0.6
   font_awesome_flutter: ^9.1.0
+  badges: ^2.0.1
 
 dev_dependencies:
   flutter_test:

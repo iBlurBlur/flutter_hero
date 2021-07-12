@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hero/src/widgets/custom_drawer.dart';
+import 'package:flutter_hero/src/pages/home/widget/custom_drawer.dart';
 
 class HomePage extends StatefulWidget {
   @override
