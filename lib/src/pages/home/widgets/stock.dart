@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hero/src/configs/routes/app_route.dart';
 import 'package:flutter_hero/src/models/product.dart';
-import 'package:flutter_hero/src/pages/home/widget/product_item.dart';
+import 'package:flutter_hero/src/pages/home/widgets/product_item.dart';
 import 'package:flutter_hero/src/utils/services/network_service.dart';
 import 'package:flutter_hero/src/widgets/network_fail.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

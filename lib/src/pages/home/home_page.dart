@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hero/src/pages/home/widget/custom_drawer.dart';
-import 'package:flutter_hero/src/pages/home/widget/custom_tabbar.dart';
+import 'package:flutter_hero/src/pages/home/widgets/custom_drawer.dart';
+import 'package:flutter_hero/src/pages/home/widgets/custom_tabbar.dart';
 import 'package:flutter_hero/src/viewmodels/tab_menu_viewmodel.dart';
 
 class HomePage extends StatelessWidget {

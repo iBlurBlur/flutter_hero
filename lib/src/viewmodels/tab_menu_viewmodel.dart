@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hero/src/pages/home/widget/stock.dart';
+import 'package:flutter_hero/src/pages/home/widgets/stock.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TabMenu {
