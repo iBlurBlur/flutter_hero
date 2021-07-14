@@ -1,9 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hero/src/configs/routes/app_route.dart';
 import 'package:flutter_hero/src/models/product.dart';
 import 'package:flutter_hero/src/pages/home/widget/product_item.dart';
 import 'package:flutter_hero/src/utils/services/network_service.dart';
+import 'package:flutter_hero/src/widgets/network_fail.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Stock extends StatefulWidget {
@@ -11,11 +11,15 @@ class Stock extends StatefulWidget {
   _StockState createState() => _StockState();
 }
 
-class _StockState extends State<Stock> {
+class _StockState extends State<Stock> with AutomaticKeepAliveClientMixin {
   final _spacing = 4.0;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: _buildFeedNetwork(),
@@ -29,17 +33,13 @@ class _StockState extends State<Stock> {
   FutureBuilder _buildFeedNetwork() => FutureBuilder<List<Product>>(
         future: NetworkService().productAll(),
         builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return NetworkFail();
+          }
+
           if (!snapshot.hasData) {
             return Center(
               child: CircularProgressIndicator(),
-            );
-          }
-
-          if (snapshot.hasError) {
-            return Container(
-              alignment: Alignment.topCenter,
-              padding: EdgeInsets.only(top: 22),
-              child: Text((snapshot.error as DioError).message),
             );
           }
 
@@ -92,4 +92,5 @@ class _StockState extends State<Stock> {
       setState(() {});
     });
   }
+
 }

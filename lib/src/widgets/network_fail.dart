@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ImageNotFound extends StatelessWidget {
+class NetworkFail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -8,14 +9,14 @@ class ImageNotFound extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Icon(
-            Icons.image_not_supported,
+          FaIcon(
+            FontAwesomeIcons.server,
             size: 50,
             color: Colors.black45,
           ),
           SizedBox(height: 8),
           Text(
-            'Image Not Found',
+            'Network fail',
             style: TextStyle(
               fontSize: 12,
             ),
@@ -25,5 +26,3 @@ class ImageNotFound extends StatelessWidget {
     );
   }
 }
-
-
