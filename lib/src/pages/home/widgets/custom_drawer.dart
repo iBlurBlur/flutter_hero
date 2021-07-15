@@ -22,8 +22,7 @@ class CustomDrawer extends StatelessWidget {
     );
   }
 
-  UserAccountsDrawerHeader _buildProfile() =>
-      UserAccountsDrawerHeader(
+  UserAccountsDrawerHeader _buildProfile() => UserAccountsDrawerHeader(
         accountName: Text('iBlur Blur'),
         accountEmail: Text('tanakorn.ngam@gmail.com'),
         currentAccountPicture: Container(
@@ -40,41 +39,55 @@ class CustomDrawer extends StatelessWidget {
         ),
       );
 
-  List<ListTile> _buildMainMenu(BuildContext context) =>
-      MenuViewModel()
-          .items
-          .map((item) {
-        final badgeCount = 99;
-        return ListTile(
-          title: Text(
-            item.title,
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 18.0,
-            ),
-          ),
-          leading: Badge(
-            showBadge: item.icon == FontAwesomeIcons.inbox && badgeCount != 0,
-            badgeContent: Text(
-              '$badgeCount',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
+  List<ListTile> _buildMainMenu(BuildContext context) {
+    final menuViewModel = MenuViewModel()..setInBox = '99';
+    return menuViewModel.items
+        .map((item) => ListTile(
+              title: Text(
+                item.title,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18.0,
+                ),
               ),
-            ),
-            badgeColor: Colors.red,
-            child: FaIcon(
-              item.icon,
-              color: item.iconColor,
-            ),
-          ),
-          onTap: () => item.navigator(context),
-        );
-      })
-          .toList();
+              leading: _buildBadge(
+                item.notification ?? '',
+                icon: item.icon,
+                iconColor: item.iconColor,
+              ),
+              onTap: () => item.navigator(context),
+            ))
+        .toList();
+  }
 
-  ListTile _buildLogout(BuildContext context) =>
-      ListTile(
+  Badge _buildBadge(
+    String notification, {
+    required IconData icon,
+    required Color iconColor,
+  }) {
+    final isMaxNotification = notification.length >= 3;
+    return Badge(
+      toAnimate: false,
+      shape: isMaxNotification ? BadgeShape.square : BadgeShape.circle,
+      borderRadius:
+          isMaxNotification ? BorderRadius.circular(8) : BorderRadius.zero,
+      showBadge: notification.isNotEmpty,
+      badgeContent: Text(
+        notification.length >= 4 ? '999+' : notification,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 12,
+        ),
+      ),
+      badgeColor: Colors.red,
+      child: FaIcon(
+        icon,
+        color: iconColor,
+      ),
+    );
+  }
+
+  ListTile _buildLogout(BuildContext context) => ListTile(
         title: Text('Log out'),
         leading: Icon(
           FontAwesomeIcons.signOutAlt,
@@ -92,9 +105,7 @@ class CustomDrawer extends StatelessWidget {
           actions: <Widget>[
             TextButton(
               child: Text('Cancel'),
-              onPressed: () async {
-                Navigator.of(dialogContext).pop();
-              },
+              onPressed: () => Navigator.of(dialogContext).pop(),
             ),
             TextButton(
               child: Text(
@@ -109,7 +120,7 @@ class CustomDrawer extends StatelessWidget {
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   AppRoute.login,
-                      (route) => false,
+                  (route) => false,
                 );
               },
             ),
