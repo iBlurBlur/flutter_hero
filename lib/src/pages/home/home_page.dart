@@ -1,46 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hero/src/pages/home/widget/custom_drawer.dart';
+import 'package:flutter_hero/src/pages/home/widgets/custom_drawer.dart';
+import 'package:flutter_hero/src/pages/home/widgets/custom_tabbar.dart';
+import 'package:flutter_hero/src/viewmodels/tab_menu_viewmodel.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class HomePage extends StatelessWidget {
+  final _tabs = TabMenuViewModel().items;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: CustomDrawer(),
-      appBar: AppBar(
-        title: Text("Home"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return DefaultTabController(
+      length: _tabs.length,
+      child: Scaffold(
+        appBar: _buildAppbar(),
+        drawer: CustomDrawer(),
+        body: TabBarView(
+          children: _tabs.map((item) => item.child).toList(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
+
+  AppBar _buildAppbar() => AppBar(
+    title: Text('Stock Workshop'),
+    centerTitle: true,
+    bottom: CustomTabBar(_tabs),
+    actions: <Widget>[
+      IconButton(
+        onPressed: () {
+          //todo
+        },
+        icon: Icon(Icons.bookmark_border),
+      ),
+      IconButton(
+        onPressed: () {
+          //todo
+        },
+        icon: Icon(Icons.qr_code),
+      ),
+    ],
+  );
 }
