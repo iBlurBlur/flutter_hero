@@ -39,7 +39,11 @@ class ProductItem extends StatelessWidget {
           width: double.infinity,
           height: height,
           child: image != null && image.isNotEmpty
-              ? Image.network('${NetworkAPI.imageURL}/$image')
+              ? Image.network(
+                  '${NetworkAPI.imageURL}/$image',
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                )
               : ImageNotFound(),
         ),
         if (stock <= 0) _buildOutOfStock(),

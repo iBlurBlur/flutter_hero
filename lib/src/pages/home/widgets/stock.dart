@@ -58,7 +58,10 @@ class _StockState extends State<Stock> with AutomaticKeepAliveClientMixin {
 
   RefreshIndicator _buildProductGrid(List<Product> products) =>
       RefreshIndicator(
-        onRefresh: () async => setState(() {}),
+        onRefresh: () async {
+         await Future.delayed(Duration(seconds: 1));
+         setState(() {});
+        },
         child: GridView.builder(
           padding: EdgeInsets.only(
             left: _spacing,
@@ -92,5 +95,4 @@ class _StockState extends State<Stock> with AutomaticKeepAliveClientMixin {
       setState(() {});
     });
   }
-
 }
