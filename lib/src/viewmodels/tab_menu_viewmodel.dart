@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hero/src/pages/home/widgets/report.dart';
 import 'package:flutter_hero/src/pages/home/widgets/stock.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -22,20 +23,17 @@ class TabMenuViewModel {
           icon: FontAwesomeIcons.box,
         ),
         TabMenu(
+          'Report',
+          Report(),
+          icon: FontAwesomeIcons.fileAlt,
+        ),
+        TabMenu(
           'Chart',
           FlutterLogo(
             size: 100,
             style: FlutterLogoStyle.horizontal,
           ),
           icon: FontAwesomeIcons.chartArea,
-        ),
-        TabMenu(
-          'Report',
-          FlutterLogo(
-            size: 100,
-            style: FlutterLogoStyle.stacked,
-          ),
-          icon: FontAwesomeIcons.fileAlt,
         ),
       ];
 }
