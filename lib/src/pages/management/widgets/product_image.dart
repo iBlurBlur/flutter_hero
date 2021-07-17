@@ -130,7 +130,7 @@ class _ProductImageState extends State<ProductImage> {
 
   void _pickImage(ImageSource source) {
     _picker
-        .getImage(
+        .pickImage(
       source: source,
       imageQuality: 70,
       maxHeight: 500,

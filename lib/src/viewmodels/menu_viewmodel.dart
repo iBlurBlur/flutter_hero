@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hero/src/configs/routes/app_route.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Menu {
@@ -40,7 +41,7 @@ class MenuViewModel {
       icon: FontAwesomeIcons.map,
       iconColor: Colors.blue,
       navigator: (context) {
-        //todo
+        Navigator.pushNamed(context, AppRoute.map);
       },
     ),
     Menu(

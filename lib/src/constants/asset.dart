@@ -4,5 +4,6 @@ class Asset{
   static const noPhotoImage = '$assetImage/no_photo.png';
   static const pinBikerImage = '$assetImage/pin_biker.png';
   static const pinMarkerImage = '$assetImage/pin_marker.png';
+  static const pinCurrentImage = '$assetImage/pin_current.png';
 }
 
