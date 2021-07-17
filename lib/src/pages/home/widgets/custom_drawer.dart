@@ -87,13 +87,15 @@ class CustomDrawer extends StatelessWidget {
     );
   }
 
-  ListTile _buildLogout(BuildContext context) => ListTile(
-        title: Text('Log out'),
-        leading: Icon(
-          FontAwesomeIcons.signOutAlt,
-          color: Colors.grey,
+  SafeArea _buildLogout(BuildContext context) => SafeArea(
+        child: ListTile(
+          title: Text('Log out'),
+          leading: Icon(
+            FontAwesomeIcons.signOutAlt,
+            color: Colors.grey,
+          ),
+          onTap: () => _logout(context),
         ),
-        onTap: () => _logout(context),
       );
 
   void _logout(BuildContext context) {

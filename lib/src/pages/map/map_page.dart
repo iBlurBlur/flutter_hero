@@ -62,6 +62,7 @@ class _MapPageState extends State<MapPage> {
             },
             zoomControlsEnabled: false,
             trafficEnabled: false,
+            myLocationButtonEnabled: false,
             markers: _markers,
           ),
           StreamBuilder<LatLng?>(
