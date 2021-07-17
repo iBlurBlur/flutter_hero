@@ -70,7 +70,14 @@ class _MapPageState extends State<MapPage> {
               if (_locationSubscription != null || _markers.isEmpty) {
                 return SizedBox();
               }
-              return CustomInfoWindow(stream.data, 10);
+              return CustomInfoWindow(
+                stream.data,
+                top: 10,
+                navigator: () => _launchMaps(
+                  lat: stream.data!.latitude,
+                  lng: stream.data!.longitude,
+                ),
+              );
             },
           )
         ],
@@ -306,7 +313,6 @@ class _MapPageState extends State<MapPage> {
         latLng,
         title: 'Rider009',
         snippet: 'Cat Lover',
-        isShowInfo: true,
       );
     }
 
@@ -328,3 +334,4 @@ class _MapPageState extends State<MapPage> {
     );
   }
 }
+
